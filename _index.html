@@ -12,10 +12,127 @@
     <title>Letters</title>
   </head>
   <body>
-    <h1>Letters: E Roon Kang</h1>
-    <p>We write from left to right but why?</p>
+    <h1>양치학개론</h1>
+    <p>구강 건강을 위한 최고의 방법</p>
+    <div id="output"></div>
+    
     <script>
-      // the javascript content here. 
+      const outputEl = document.getElementById("output");
+      
+      function addDomElement(tag, attrs) {
+        const el = document.createElement(tag);
+        if (attrs) {
+          for (const k in attrs) {
+            if (k === "text") {
+              el.textContent = attrs[k];
+            } else {
+              el.setAttribute(k, attrs[k]);
+            }
+          }
+        }
+        outputEl.appendChild(el);
+        return el;
+      }
+
+      function playSound(url) {
+        const audio = new Audio(url);
+        audio.play();
+      }
+
+      document.addEventListener("keydown", function(event) {
+        console.log("Key pressed:", event.key);
+        if (event.key === "Backspace") {
+          if (outputEl.lastChild) {
+            outputEl.removeChild(outputEl.lastChild);
+          }
+          //1열
+        } else if (event.key === "q") {
+          addDomElement("span", { text: "너 아직까지 양치 하니?" });
+        } else if (event.key === "Q") {
+          addDomElement("span", { text: "Are you still brushing your teeth?" });
+          
+        } else if (event.key === "w") {
+          addDomElement("span", { text: "주변 사람이 3번 정도 바뀌고 나서도 나는 계속 양치를 하고 있었다." });
+        } else if (event.key === "W") {
+          addDomElement("span", { text: "Even after the people around me changed about 3 times, I continued to brush my teeth." });
+
+        } else if (event.key === "e") {
+          addDomElement("span", { text: "그러다가 이 다 닳겠다." });
+        } else if (event.key === "E") {
+          addDomElement("span", { text: "Then all your teeth might wear out and disappear." });
+          
+        } else if (event.key === "r") {
+          addDomElement("span", { text: "방향제를 먹는 건 안 되는 거지?" });
+        } else if (event.key === "R") {
+          addDomElement("span", { text: "I can't eat air freshener, right?" });
+
+        } else if (event.key === "t") {
+          addDomElement("span", { text: "목에서 간장 냄새가 계속 나는 것 같아." });
+        } else if (event.key === "T") {
+          addDomElement("span", { text: "I feel like my throat is constantly smelling like soy sauce." });
+
+        } else if (event.key === "y") {
+          addDomElement("span", { text: "목에서 양파 냄새가 계속 나는 것 같아." });
+        } else if (event.key === "Y") {
+          addDomElement("span", { text: "I feel like my throat is constantly smelling like onions." });
+
+        } else if (event.key === "u") {
+          addDomElement("span", { text: "양치를 하다가 보니 문득, 나는 내 입과 목을 도려내면 좋을지도 모르겠다는 생각이 들었다." });
+        } else if (event.key === "U") {
+          addDomElement("span", { text: "As I was brushing my teeth, it suddenly occurred to me that maybe it would be a good idea to cut out my mouth and throat." });
+
+        } else if (event.key === "i") {
+          addDomElement("span", { text: "가글가글" });
+        } else if (event.key === "I") {
+          addDomElement("span", { text: "Grrrrrrrrr" });
+
+        } else if (event.key === "o") {
+          addDomElement("span", { text: "나의 친구: 나도 한 번 양치할 때 세 번씩 해!" });
+        } else if (event.key === "O") {
+          addDomElement("span", { text: "My friend: I brush my teeth three times after eating!" });
+
+        } else if (event.key === "p") {
+          addDomElement("span", { text: "보글보글" });
+        } else if (event.key === "P") {
+          addDomElement("span", { text: "Bubble Bubble" });
+          
+        //2열
+        } else if (event.key === "a" || event.key === "A") {
+          addDomElement("img", { src: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnc0N2ZneHpjMGQyeHhrZ2ViNHVnNzZrY3BtZWRmbWptM2VwM3AwbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btYvi7DrV7xw5ZS/giphy.gif" });
+
+        } else if (event.key === "s" || event.key === "S") {
+          addDomElement("img", { src: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjRoZ2FwbHc2NW56YTd1YjRpaTI1NTdhODZ4ZHNrYnIwZ2JxMnoycyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/G3va31oEEnIkM/giphy.gif" });
+
+        } else if (event.key === "d" || event.key === "D") {
+          addDomElement("img", { src: "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2VkYXRxcTl3bW9iZXZwc3B5MDM3cmY2aGY5M3MwMWx3YXo3eDFmbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NwIjtWI08MB1K/giphy.gif" });
+
+        } else if (event.key === "f" || event.key === "F") {
+          addDomElement("img", { src: "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTloaGF3djd2Z3k5NGIzajRrdmt3OHF2cWR6cDl6Y3p1MDkxcGxvYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ToMjGpOiLXsuR4yYkMg/giphy.gif" });
+        
+        } else if (event.key === "g") {
+          playSound("https://www.epidemicsound.com/sound-effects/tracks/df4709fa-f3b4-43cf-8fc9-b1e37896da24/");
+          addDomElement("span", { text: "위이이이이이이이이이이잉커억커어어억커어억위이이이이이잉" });
+        } else if (event.key === "G") {
+          playSound("https://www.epidemicsound.com/sound-effects/tracks/df4709fa-f3b4-43cf-8fc9-b1e37896da24/");
+          addDomElement("span", { text: "wiiiiiiiiiiiingkeoeogkeoeoeoeogkeoeoeog-wiiiiiiing" });
+
+        } else if (event.key === "h") {
+          playSound("https://www.epidemicsound.com/sound-effects/tracks/d258e283-4cd3-4e4c-84ec-8535e1e5a1be/");
+          addDomElement("span", { text: "가글가글" });
+        } else if (event.key === "H") {
+          playSound("https://www.epidemicsound.com/sound-effects/tracks/d258e283-4cd3-4e4c-84ec-8535e1e5a1be/");
+          addDomElement("span", { text: "Grrrrrrr" });
+
+
+
+
+          
+        } else {
+          addDomElement("span", { text: event.key });
+        }
+      }); 
     </script>
+    
   </body>
+
 </html>
