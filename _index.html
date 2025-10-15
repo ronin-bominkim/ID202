@@ -1,17 +1,83 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Indroduction of How to Brush My Teeth</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: 'Gulim', sans-serif;
+        font-weight: 900;
+        margin: 10px;
+        padding: 20px;
+        width: 100vw;
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        box-sizing: border-box
+      }
+      
+      h1, p {
+        color: white;
+      }
+
+      h1 {
+        font-size: 80px;        /* 글자 크기 */
+        margin-bottom: 0px;    /* 아래쪽 간격 */
+        line-height: 80px;       /* 행간 */
+      }
+
+      p {
+        font-size: 50px;        /* 글자 크기 */
+        margin-bottom: 30px;    /* 아래쪽 간격 */
+        line-height: 50px;       /* 행간 */
+      }
+   
+      
+      #output {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0px;
+        line-height: 10px;
+        row-gap: 10px;
+
+      }
+      
+      #output span {
+        display: inline-block;
+        height: 30px;
+        line-height: 20px;
+        font-size: 20px;
+        white-space: normal;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      
+      #output img {
+
+        width: auto;
+      }
+    </style>
   </head>
   <body>
-    <h1>양치학개론</h1>
-    <p>구강 건강을 위한 최고의 방법</p>
+    <h1>양치학개론 Indroduction of How to Brush My Teeth</h1>
+    <p>~구강 건강을 위한 최고의 방법 The Best Way of Making My Teeth Clean~</p>
     <div id="output"></div>
-    
+   
     <script>
       const outputEl = document.getElementById("output");
+      let lastKey = "";
+      let repeatCount = 0;
+      let currentSize = 20;
+
+      function getRandomColor() {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r}, ${g}, ${b})`;
+      }
       
       function addDomElement(tag, attrs) {
         const el = document.createElement(tag);
@@ -24,6 +90,16 @@
             }
           }
         }
+        
+        if (tag === "span") {
+          el.style.color = getRandomColor();
+          el.style.backgroundColor = getRandomColor();
+          el.style.fontSize = currentSize + "px";
+        }
+        
+        if (tag === "img") {
+          el.style.height = currentSize + "px";
+        }
         outputEl.appendChild(el);
         return el;
       }
@@ -35,60 +111,70 @@
 
       document.addEventListener("keydown", function(event) {
         console.log("Key pressed:", event.key);
+
+        if (event.key === lastKey && event.key !== "Backspace") {
+          repeatCount++;
+          currentSize = 20 + (repeatCount * 10);
+        } else {
+          lastKey = event.key;
+          repeatCount = 0;
+          currentSize = 20;
+        }
+
         if (event.key === "Backspace") {
           if (outputEl.lastChild) {
             outputEl.removeChild(outputEl.lastChild);
           }
           //1열
         } else if (event.key === "q") {
-          addDomElement("span", { text: "너 아직까지 양치 하니?" });
+          addDomElement("span", { text: "너 아직까지 양치 하니? " });
         } else if (event.key === "Q") {
-          addDomElement("span", { text: "Are you still brushing your teeth?" });
+          addDomElement("span", { text: "Are you still brushing your teeth? " });
           
         } else if (event.key === "w") {
-          addDomElement("span", { text: "주변 사람이 3번 정도 바뀌고 나서도 나는 계속 양치를 하고 있었다." });
+          addDomElement("span", { text: "주변 사람이 3번 정도 바뀌고 나서도 나는 계속 양치를 하고 있었다. " });
         } else if (event.key === "W") {
-          addDomElement("span", { text: "Even after the people around me changed about 3 times, I continued to brush my teeth." });
+          addDomElement("span", { text: "Even after the people around me changed about 3 times, I continued to brush my teeth. " });
 
         } else if (event.key === "e") {
-          addDomElement("span", { text: "그러다가 이 다 닳겠다." });
+          addDomElement("span", { text: "그러다가 이 다 닳겠다. " });
         } else if (event.key === "E") {
-          addDomElement("span", { text: "Then all your teeth might wear out and disappear." });
+          addDomElement("span", { text: "Then all your teeth might wear out and disappear. " });
           
         } else if (event.key === "r") {
-          addDomElement("span", { text: "방향제를 먹는 건 안 되는 거지?" });
+          addDomElement("span", { text: "방향제를 먹는 건 안 되는 거지? " });
         } else if (event.key === "R") {
-          addDomElement("span", { text: "I can't eat air freshener, right?" });
+          addDomElement("span", { text: "I can't eat air freshener, right? " });
 
         } else if (event.key === "t") {
-          addDomElement("span", { text: "목에서 간장 냄새가 계속 나는 것 같아." });
+          addDomElement("span", { text: "목에서 간장 냄새가 계속 나는 것 같아. " });
         } else if (event.key === "T") {
-          addDomElement("span", { text: "I feel like my throat is constantly smelling like soy sauce." });
+          addDomElement("span", { text: "I feel like my throat is constantly smelling like soy sauce. " });
 
         } else if (event.key === "y") {
-          addDomElement("span", { text: "목에서 양파 냄새가 계속 나는 것 같아." });
+          addDomElement("span", { text: "목에서 양파 냄새가 계속 나는 것 같아. " });
         } else if (event.key === "Y") {
-          addDomElement("span", { text: "I feel like my throat is constantly smelling like onions." });
+          addDomElement("span", { text: "I feel like my throat is constantly smelling like onions. " });
 
         } else if (event.key === "u") {
-          addDomElement("span", { text: "양치를 하다가 보니 문득, 나는 내 입과 목을 도려내면 좋을지도 모르겠다는 생각이 들었다." });
+          addDomElement("span", { text: "양치를 하다가 보니 문득, 나는 내 입과 목을 도려내면 좋을지도 모르겠다는 생각이 들었다. " });
         } else if (event.key === "U") {
-          addDomElement("span", { text: "As I was brushing my teeth, it suddenly occurred to me that maybe it would be a good idea to cut out my mouth and throat." });
+          addDomElement("span", { text: "As I was brushing my teeth, it suddenly occurred to me that maybe it would be a good idea to cut out my mouth and throat. " });
 
         } else if (event.key === "i") {
-          addDomElement("span", { text: "가글가글" });
+          addDomElement("span", { text: "가글가글 " });
         } else if (event.key === "I") {
-          addDomElement("span", { text: "Grrrrrrrrr" });
+          addDomElement("span", { text: "Grrrrrrrrr " });
 
         } else if (event.key === "o") {
-          addDomElement("span", { text: "나의 친구: 나도 한 번 양치할 때 세 번씩 해!" });
+          addDomElement("span", { text: "나의 친구: 나도 한 번 양치할 때 세 번씩 해! " });
         } else if (event.key === "O") {
-          addDomElement("span", { text: "My friend: I brush my teeth three times after eating!" });
+          addDomElement("span", { text: "My friend: I brush my teeth three times after eating! " });
 
         } else if (event.key === "p") {
-          addDomElement("span", { text: "보글보글" });
+          addDomElement("span", { text: "보글보글 " });
         } else if (event.key === "P") {
-          addDomElement("span", { text: "Bubble Bubble" });
+          addDomElement("span", { text: "Bubble Bubble " });
           
         //2열
         } else if (event.key === "a" || event.key === "A") {
@@ -162,10 +248,8 @@
         } else if (event.key === "M") {
           addDomElement("span", { text: "Chapter 7. Finish your brushing with a mouthwash. " });
 
-
-          
         } else {
-          addDomElement("span", { text: ""});
+          addDomElement("span", { text: "고도로 발전한 나의 양치 실력! 양치! 양치! 양치! "});
         }
       }); 
     </script>
